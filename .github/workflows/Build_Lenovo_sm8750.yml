@@ -207,6 +207,15 @@ jobs:
             echo "正在配置SukiSU Ultra..."
             curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU-Ultra/refs/heads/main/kernel/setup.sh" | bash -s builtin
             cd ./KernelSU
+            # ================== 修改开始 ==================
+            # 3. 强制回退到指定版本
+            # 【重要】请将下面的 <COMMIT_HASH> 替换为 13312 版本对应的 Commit SHA
+            # 例如: git reset --hard 8a34b1c
+            
+            echo "正在回退源码到指定版本..."
+            git reset --hard 662a2b1
+            
+            # ================== 修改结束 ==================
             # 获取当前 Git 提交的短哈希 (8位)
             GIT_COMMIT_HASH=$(git rev-parse --short=8 HEAD)
             echo "当前提交哈希: $GIT_COMMIT_HASH"
